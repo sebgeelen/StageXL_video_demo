@@ -10,7 +10,7 @@ class VideoDemo extends DisplayObjectContainer {
   InputElement loopInput     = html.querySelector('#loop');
   InputElement fpsInput      = html.querySelector('#fps');
   InputElement alphaInput    = html.querySelector('#opacity');
-  InputElement filtersSelect = html.querySelector('#filters');
+  SelectElement filtersSelect = html.querySelector('#filters');
 
   VideoDemo() {
     // sprite 3d setup
