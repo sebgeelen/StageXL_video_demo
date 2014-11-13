@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+
+    <script async type="application/dart" src="video_test.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>StageXL : video implementation test page</h1>
+    <div>
+        <label>Opacity : </label><input id="opacity" type="text" value="1" style="width:20px">&nbsp;|&nbsp;
+        <label>FrameRate : </label><input id="fps" type="text" value="30" style="width:25px">&nbsp;fps&nbsp;|&nbsp;
+        <label>Filter : </label>
+        <select id="filters">
+            <option value="none">None</option>
+            <option value="grayscale">Grayscale</option>
+            <option value="chromaKey">Chroma Key</option>
+            <option value="invert">Invert</option>
+            <option value="blur">Blur</option>
+        </select>&nbsp;|&nbsp;
+        <label>Autoplay : </label><input id="autoplay" type="checkbox">&nbsp;|&nbsp;
+        <label>Loop : </label><input id="loop" type="checkbox">&nbsp;|&nbsp;
+        <button id="addVideo">New video</button>
+    </div>
+    <hr>
+    <div>
+        <button id="playPause">play | pause</button>
+        <button id="toggleMute">mute | unmute</button>
+        <button id="animate">animate</button>
+        <button id="animate3d">animate3d</button>
+        <button id="clear">clear stage</button>
+        <span>Current Fps : <span id="fpsMeter"></span></span>
+    </div>
+    <hr>
+    <canvas id="stage" width="900" height="500"></canvas>
+  </body>
+</html>

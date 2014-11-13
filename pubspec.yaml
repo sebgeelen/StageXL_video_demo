@@ -1,0 +1,6 @@
+name: video_test
+description: video implemntation test page
+dependencies:
+  browser: any
+  stagexl:
+    path: ../StageXL
