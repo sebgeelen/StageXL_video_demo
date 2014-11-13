@@ -6,10 +6,10 @@ class VideoDemo extends DisplayObjectContainer {
   VideoData _videoData        = _resourceManager.getVideoData("video");
   Sprite3D  _sprite3D         = new Sprite3D();
 
-  InputElement autoplayInput = html.querySelector('#autoplay');
-  InputElement loopInput     = html.querySelector('#loop');
-  InputElement fpsInput      = html.querySelector('#fps');
-  InputElement alphaInput    = html.querySelector('#opacity');
+  InputElement autoplayInput  = html.querySelector('#autoplay');
+  InputElement loopInput      = html.querySelector('#loop');
+  InputElement fpsInput       = html.querySelector('#fps');
+  InputElement alphaInput     = html.querySelector('#opacity');
   SelectElement filtersSelect = html.querySelector('#filters');
 
   VideoDemo() {
@@ -28,7 +28,8 @@ class VideoDemo extends DisplayObjectContainer {
     html.querySelector('#addVideo').onClick.listen((e) => newVideo());
 
     html.querySelector('#toggleMute').onClick.listen((e) => toggleMuteVideo());
-    html.querySelector('#playPause').onClick.listen((e) => playPauseVideo());
+    html.querySelector('#play').onClick.listen((e) => playVideo());
+    html.querySelector('#pause').onClick.listen((e) => pauseVideo());
 
     html.querySelector('#animate').onClick.listen((e) => animate());
     html.querySelector('#animate3d').onClick.listen((e) => animate3d());
@@ -56,17 +57,23 @@ class VideoDemo extends DisplayObjectContainer {
 
   //---------------------------------------------------------------------------------
 
-  void playPauseVideo()
+  void playVideo()
   {
     _allVideos.forEach((video) {
-      video.playPause();
+      video.play();
+    });
+  }
+  void pauseVideo()
+  {
+    _allVideos.forEach((video) {
+      video.pause();
     });
   }
 
   void toggleMuteVideo()
   {
     _allVideos.forEach((video) {
-      video.toggleMute();
+      video.muted = !video.muted;
     });
   }
 
@@ -97,13 +104,12 @@ class VideoDemo extends DisplayObjectContainer {
 
   void clear()
   {
+    _allVideos.forEach((video) {
+      video.pause();
+    });
+
     _allVideos = new List<Video>();
     _sprite3D.removeChildren();
-
-    /*_allVideos.forEach((video) {
-      _sprite3D.removeChild(video);
-      video.destroy();
-    });*/
   }
 
   //---------------------------------------------------------------------------------
@@ -114,7 +120,7 @@ class VideoDemo extends DisplayObjectContainer {
     var loop        = loopInput.checked;
     var frameRate   = int.parse(fpsInput.value);
 
-    var video       = new Video(_videoData, autoplay, loop, frameRate);
+    var video       = new Video(_videoData, autoplay: autoplay, loop: loop, frameRate: frameRate);
 
     var videoPerCol = (_canvas.width / video.width).ceil();
     var currentCell = _allVideos.length % videoPerCol;

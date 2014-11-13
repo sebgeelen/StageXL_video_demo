@@ -18,7 +18,7 @@ ResourceManager _resourceManager  = new ResourceManager();
 var _filters = {
   'none': [],
   'grayscale': [new ColorMatrixFilter.grayscale()],
-  'chromaKey': [new ChromaKeyFilter(0xFFA2CFFC, 25)],
+  'chromaKey': [new ChromaKeyFilter(alphaColor: 0xFFA2CFFC, tolerance: 25)],
   'invert': [new ColorMatrixFilter.invert()],
   'blur': [new BlurFilter(5, 5)]
 };
