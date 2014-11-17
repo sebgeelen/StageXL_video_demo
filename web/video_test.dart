@@ -30,7 +30,7 @@ void main()
 
   _resourceManager
     ..addBitmapData('bg', 'bg.jpg')
-    ..addVideoData('video', 'video/mov.mp4');
+    ..addVideo('video', 'video/mov.mp4');
 
   _resourceManager.load()
     .then((_) {

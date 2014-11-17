@@ -3,4 +3,4 @@ description: video implemntation test page
 dependencies:
   browser: any
   stagexl:
-    path: ../StageXL
+    path: ../StageXLOfficial

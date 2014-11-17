@@ -3,7 +3,7 @@ part of videoTest;
 class VideoDemo extends DisplayObjectContainer {
   List      _allVideos        = new List<Video>();
   bool      _animationStarted = false;
-  VideoData _videoData        = _resourceManager.getVideoData("video");
+  //Video     _videoData        = _resourceManager.getVideo("video");
   Sprite3D  _sprite3D         = new Sprite3D();
 
   InputElement autoplayInput  = html.querySelector('#autoplay');
@@ -65,6 +65,7 @@ class VideoDemo extends DisplayObjectContainer {
   }
   void pauseVideo()
   {
+
     _allVideos.forEach((video) {
       video.pause();
     });
@@ -120,29 +121,33 @@ class VideoDemo extends DisplayObjectContainer {
     var loop        = loopInput.checked;
     var frameRate   = int.parse(fpsInput.value);
 
-    var video       = new Video(_videoData, autoplay: autoplay, loop: loop, frameRate: frameRate);
+    var video       = _resourceManager.getVideo("video");
+    var bitmapData  = new BitmapData.fromVideoElement(video.videoElement);
+    var bitmap      = new Bitmap(bitmapData);
 
-    var videoPerCol = (_canvas.width / video.width).ceil();
+    //var video       = new Video(_videoData, autoplay: autoplay, loop: loop, frameRate: frameRate);
+
+    var videoPerCol = (_canvas.width / bitmap.width).ceil();
     var currentCell = _allVideos.length % videoPerCol;
-    var videoPerRow = (_canvas.height / video.height).ceil();
+    var videoPerRow = (_canvas.height / bitmap.height).ceil();
     var currentRow  = (_allVideos.length / videoPerCol).floor() % videoPerRow;
 
-    var x           = currentCell * video.width.toInt();
-    var y           = currentRow * video.height.toInt();
-    video.x         = x + video.width / 2;
-    video.y         = y + video.height / 2;
-    video.pivotX    = video.width / 2;
-    video.pivotY    = video.height / 2;
+    var x           = currentCell * bitmap.width.toInt();
+    var y           = currentRow * bitmap.height.toInt();
+    bitmap.x         = x + bitmap.width / 2;
+    bitmap.y         = y + bitmap.height / 2;
+    bitmap.pivotX    = bitmap.width / 2;
+    bitmap.pivotY    = bitmap.height / 2;
 
-    video.alpha     = num.parse(alphaInput.value);
+    bitmap.alpha     = num.parse(alphaInput.value);
 
     var filter      = _filters[filtersSelect.value];
-    video.filters   = filter;
+    bitmap.filters   = filter;
     if (!_webGL && filter.length > 0) {
-      video.applyCache(0, 0, video.width, video.height);
+      bitmap.applyCache(0, 0, bitmap.width, bitmap.height);
     }
 
     _allVideos.add(video);
-    _sprite3D.addChild(video);
+    _sprite3D.addChild(bitmap);
   }
 }
