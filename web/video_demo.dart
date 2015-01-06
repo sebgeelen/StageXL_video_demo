@@ -37,7 +37,7 @@ class VideoDemo extends DisplayObjectContainer {
     html.querySelector('#clear').onClick.listen((e) => clear());
 
     // add event listener for EnterFrame (fps meter)
-    this.onEnterFrame.listen(_onEnterFrame);
+    this.onEnterFrame.listen(_onEnterFrame);  
   }
 
   //---------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ class VideoDemo extends DisplayObjectContainer {
     _allVideos.forEach((video) {
       video.pause();
     });
-  }
+  }  
 
   void toggleMuteVideo()
   {
