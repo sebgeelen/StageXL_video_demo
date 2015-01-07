@@ -3,10 +3,10 @@ part of videoTest;
 class VideoDemo extends DisplayObjectContainer {
   List      _allVideos        = new List<Video>();
   bool      _animationStarted = false;
-  VideoData _videoData        = _resourceManager.getVideoData("video");
-  Sprite3D  _sprite3D         = new Sprite3D();
+  VideoData _videoData        = _resourceManager.getVideoData("video");   
+  Sprite3D  _sprite3D         = new Sprite3D();  
 
-  InputElement autoplayInput  = html.querySelector('#autoplay');
+  InputElement autoplayInput  = html.querySelector('#autoplay');   
   InputElement loopInput      = html.querySelector('#loop');
   InputElement fpsInput       = html.querySelector('#fps');
   InputElement alphaInput     = html.querySelector('#opacity');
