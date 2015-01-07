@@ -4,7 +4,7 @@ class VideoDemo extends DisplayObjectContainer {
   List      _allVideos        = new List<Video>();
   bool      _animationStarted = false;
   VideoData _videoData        = _resourceManager.getVideoData("video");
-  Sprite3D  _sprite3D         = new Sprite3D();
+  Sprite3D  _sprite3D         = new Sprite3D();    
 
   InputElement autoplayInput  = html.querySelector('#autoplay');
   InputElement loopInput      = html.querySelector('#loop');
