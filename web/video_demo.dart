@@ -1,14 +1,14 @@
-part of videoTest;
+part of videoTest;   
 
 class VideoDemo extends DisplayObjectContainer {
   List      _allVideos        = new List<Video>();
   bool      _animationStarted = false;
   VideoData _videoData        = _resourceManager.getVideoData("video");
-  Sprite3D  _sprite3D         = new Sprite3D();
+  Sprite3D  _sprite3D         = new Sprite3D();    
 
   InputElement autoplayInput  = html.querySelector('#autoplay');
   InputElement loopInput      = html.querySelector('#loop');
-  InputElement fpsInput       = html.querySelector('#fps');
+  InputElement fpsInput       = html.querySelector('#fps')
   InputElement alphaInput     = html.querySelector('#opacity');
   SelectElement filtersSelect = html.querySelector('#filters');
 
@@ -37,7 +37,7 @@ class VideoDemo extends DisplayObjectContainer {
     html.querySelector('#clear').onClick.listen((e) => clear());
 
     // add event listener for EnterFrame (fps meter)
-    this.onEnterFrame.listen(_onEnterFrame);
+    this.onEnterFrame.listen(_onEnterFrame);  
   }
 
   //---------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ class VideoDemo extends DisplayObjectContainer {
   }
 
   //---------------------------------------------------------------------------------
-
+   
   void playVideo()
   {
     _allVideos.forEach((video) {
@@ -68,7 +68,7 @@ class VideoDemo extends DisplayObjectContainer {
     _allVideos.forEach((video) {
       video.pause();
     });
-  }
+  }  
 
   void toggleMuteVideo()
   {

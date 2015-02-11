@@ -4,7 +4,7 @@ import 'dart:html' as html;
 import 'package:stagexl/stagexl.dart';
 
 import 'dart:html';
-import 'dart:math';
+import 'dart:math';  
 
 part 'video_demo.dart';
 
