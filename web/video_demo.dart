@@ -8,7 +8,7 @@ class VideoDemo extends DisplayObjectContainer {
 
   InputElement autoplayInput  = html.querySelector('#autoplay');
   InputElement loopInput      = html.querySelector('#loop');
-  InputElement fpsInput       = html.querySelector('#fps');
+  InputElement fpsInput       = html.querySelector('#fps')
   InputElement alphaInput     = html.querySelector('#opacity');
   SelectElement filtersSelect = html.querySelector('#filters');
 
